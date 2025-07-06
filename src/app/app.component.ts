@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from './services/event.service'; // Ajusta la ruta
+import { EventService } from './services/event.service';
 
 @Component({
-  selector: 'app-root', // O 'app-events-list' si creaste uno nuevo
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
