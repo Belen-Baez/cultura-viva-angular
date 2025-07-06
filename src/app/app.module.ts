@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common'; // ¡Añade esta línea!
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule // ¡Y añade CommonModule aquí!
+    CommonModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
