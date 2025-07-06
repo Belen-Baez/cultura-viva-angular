@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from './services/event.service';
+import { CommonModule, DatePipe } from '@angular/common'; 
+import { EventService } from './services/event.service'; 
 
 @Component({
   selector: 'app-root',
+  standalone: true, 
+  imports: [CommonModule, DatePipe], 
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
