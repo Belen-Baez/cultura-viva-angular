@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core'; [cite: 40, 163]
-import { HttpClient } from '@angular/common/http'; [cite: 41, 164]
-import { Observable } from 'rxjs'; [cite: 42, 165]
-import { environment } from '../../environments/environment'; [cite: 43, 166]
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root' [cite: 46, 169]
+  providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = environment.apiUrl; [cite: 48, 171]
+  private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {} [cite: 49, 172]
+  constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<any[]> { 
-    return this.http.get<any[]>(`${this.apiUrl}/events`); [cite: 52, 176]
+  getEvents(): Observable<any[]> { // Asumimos que devuelve un array de eventos
+    return this.http.get<any[]>(`${this.apiUrl}/events`);
   }
 
-  getEventById(id: number): Observable<any> { [cite: 53]
-    return this.http.get<any>(`${this.apiUrl}/events/${id}`); [cite: 54, 178]
+  getEventById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/events/${id}`);
   }
 }

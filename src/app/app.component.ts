@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core'; [cite: 62, 185]
-import { EventService } from './services/event.service'; // Ajusta la ruta [cite: 63, 185, 186]
+import { Component, OnInit } from '@angular/core';
+import { EventService } from './services/event.service'; // Ajusta la ruta
 
 @Component({
-  selector: 'app-root', // O 'app-events-list' si creaste uno nuevo [cite: 66]
-  templateUrl: './app.component.html', [cite: 67]
-  styleUrls: ['./app.component.css'] [cite: 68]
+  selector: 'app-root', // O 'app-events-list' si creaste uno nuevo
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'mi-evento-frontend'; [cite: 69]
-  events: any[] = []; [cite: 70, 186]
-  isLoading: boolean = true; [cite: 71, 193]
-  errorMessage: string | null = null; [cite: 72]
+  title = 'mi-evento-frontend';
+  events: any[] = [];
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
 
-  constructor(private eventService: EventService) {} [cite: 73, 187]
+  constructor(private eventService: EventService) {}
 
-  ngOnInit(): void { [cite: 74, 188]
-    this.eventService.getEvents().subscribe({ [cite: 75, 187]
-      next: (data) => { [cite: 76, 187]
-        this.events = data; [cite: 77, 187]
-        this.isLoading = false; [cite: 78, 84]
-        console.log('Eventos cargados:', this.events); [cite: 79, 187]
+  ngOnInit(): void {
+    this.eventService.getEvents().subscribe({
+      next: (data) => {
+        this.events = data;
+        this.isLoading = false;
+        console.log('Eventos cargados:', this.events);
       },
-      error: (err) => { [cite: 81, 187]
-        this.errorMessage = 'Error al cargar eventos. Por favor, inténtalo de nuevo más tarde.'; [cite: 82, 83]
-        this.isLoading = false; [cite: 84]
-        console.error('Error al cargar eventos:', err); [cite: 85, 187]
+      error: (err) => {
+        this.errorMessage = 'Error al cargar eventos. Por favor, inténtalo de nuevo más tarde.';
+        this.isLoading = false;
+        console.error('Error al cargar eventos:', err);
       }
     });
   }
