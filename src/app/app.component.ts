@@ -9,7 +9,7 @@ import { EventService } from './services/event.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'mi-evento-frontend';
   events: any[] = [];
   isLoading: boolean = true;
