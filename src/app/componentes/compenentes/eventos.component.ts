@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // NECESARIO para *ngFor
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-eventos',
-  standalone: true,
-  imports: [CommonModule], // IMPORTACIÓN OBLIGATORIA EN STANDALONE
-  templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.css'], // Este archivo debe existir o eliminarse esta línea
+  standalone: true, 
+  imports: [CommonModule], 
+  template: `
+    <div style="padding: 20px; text-align: center;">
+      <h2>Nuestros Eventos</h2>
+      <p>Aquí encontrarás una lista de todos los próximos eventos.</p>
+     
+    </div>
+  `,
+  styles: [`
+    h2 { color: #333; }
+    p { color: #666; }
+  `]
 })
-export class EventosComponent {
-  eventos = [
-    { titulo: 'Angular Connect', fecha: new Date('2025-08-10') },
-    { titulo: 'NodeConf', fecha: new Date('2025-08-20') },
-  ];
-}
+export class EventosComponent { }
