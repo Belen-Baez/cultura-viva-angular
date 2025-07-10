@@ -1,27 +1,19 @@
-<h1>Bienvenido a {{ title }}</h1>
-
-<button (click)="mostrarMensaje()">Haz clic aquí</button>
-<p *ngIf="mensajeVisible">🎉 ¡Has hecho clic en el botón!</p>
-
-<nav>
-  <a routerLink="/home">Inicio</a> |
-  <a routerLink="/eventos">Eventos</a>
-</nav>
+<header>
+  <h1>Mi Aplicación de Cultura Viva</h1>
+  <nav>
+    <a routerLink="/home">Inicio</a> |
+    <a routerLink="/eventos">Eventos</a>
+    </nav>
+</header>
 
 <hr>
 
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>
 
 <hr>
 
-<div *ngIf="isLoading">Cargando eventos...</div>
-<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
-
-<ul *ngIf="!isLoading && events.length > 0">
-  <li *ngFor="let evento of events">
-    <strong>{{ evento.titulo }}</strong> – {{ evento.fecha | date:'fullDate' }}
-    <p>{{ evento.descripcion }}</p>
-  </li>
-</ul>
-
-<p *ngIf="!isLoading && events.length === 0">No hay eventos disponibles en este momento.</p>
+<footer>
+  <p>&copy; 2025 Cultura Viva. Todos los derechos reservados.</p>
+</footer>
