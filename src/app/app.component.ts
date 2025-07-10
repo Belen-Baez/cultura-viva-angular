@@ -1,34 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common'; 
-import { EventService } from './services/event.service'; 
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  imports: [CommonModule, DatePipe], 
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'] 
 })
 export class AppComponent {
-  title = 'mi-evento-frontend';
-  events: any[] = [];
-  isLoading: boolean = true;
-  errorMessage: string | null = null;
+  title = 'cultura-viva-angular'; 
 
-  constructor(private eventService: EventService) {}
-
-  ngOnInit(): void {
-    this.eventService.getEvents().subscribe({
-      next: (data) => {
-        this.events = data;
-        this.isLoading = false;
-        console.log('Eventos cargados:', this.events);
-      },
-      error: (err) => {
-        this.errorMessage = 'Error al cargar eventos. Por favor, inténtalo de nuevo más tarde.';
-        this.isLoading = false;
-        console.error('Error al cargar eventos:', err);
-      }
-    });
+ 
+  mensajeVisible: boolean = false; 
+  mostrarMensaje(): void {
+    this.mensajeVisible = true;
+    
+    setTimeout(() => {
+      this.mensajeVisible = false;
+    }, 3000); 
   }
 }
