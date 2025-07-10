@@ -3,9 +3,16 @@
 <button (click)="mostrarMensaje()">Haz clic aquí</button>
 <p *ngIf="mensajeVisible">🎉 ¡Has hecho clic en el botón!</p>
 
+<nav>
+  <a routerLink="/home">Inicio</a> |
+  <a routerLink="/eventos">Eventos</a>
+</nav>
+
 <hr>
 
-<h2>Próximos eventos</h2>
+<router-outlet></router-outlet>
+
+<hr>
 
 <div *ngIf="isLoading">Cargando eventos...</div>
 <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
@@ -13,7 +20,8 @@
 <ul *ngIf="!isLoading && events.length > 0">
   <li *ngFor="let evento of events">
     <strong>{{ evento.titulo }}</strong> – {{ evento.fecha | date:'fullDate' }}
+    <p>{{ evento.descripcion }}</p>
   </li>
 </ul>
 
-<p *ngIf="!isLoading && events.length === 0">No hay eventos disponibles.</p>
+<p *ngIf="!isLoading && events.length === 0">No hay eventos disponibles en este momento.</p>
