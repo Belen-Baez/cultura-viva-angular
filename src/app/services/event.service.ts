@@ -10,9 +10,9 @@ export class EventService {
 
   constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/`); // ✅ con slash final
-  }
+ getEvents(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/events/`);
+}
 
   getEventById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}/`); // ✅ con slash al final
