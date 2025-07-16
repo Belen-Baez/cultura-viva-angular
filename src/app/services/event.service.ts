@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = 'http://localhost:8000/api/eventos';  // ✅ URL correcta
 
   constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<any[]> { // Asumimos que devuelve un array de eventos
-    return this.http.get<any[]>(`${this.apiUrl}/events`);
+  getEvents(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/`); // ✅ con slash final
   }
 
   getEventById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/events/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}/`); // ✅ con slash al final
   }
 }
