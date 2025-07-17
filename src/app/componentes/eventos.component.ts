@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EventService } from '../services/event.service'; // Importamos el servicio que se conecta al backend
+import { EventService } from '../services/event.service'; 
 
-// Definimos la estructura de un evento (opcional pero útil)
+// Definimos la estructura de un evento
 interface Evento {
   id: number;
   titulo: string;

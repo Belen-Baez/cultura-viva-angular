@@ -1,6 +1,6 @@
 .navbar {
   background-color: #3f51b5;
-  color: white;
+  color: red;
   padding: 1rem;
 }
 
@@ -12,7 +12,7 @@
 
 .logo {
   font-size: 1.5rem;
-  color: white;
+  color: green;
   text-decoration: none;
 }
 
@@ -20,12 +20,11 @@
   list-style: none;
   display: flex;
   gap: 1rem;
-  margin: 0;
-  padding: 0;
+  padding: 1rem;
 }
 
 .navbar-menu li a {
-  color: white;
+  color: rgb(68, 0, 255) ;
   text-decoration: none;
   font-weight: 500;
 }
