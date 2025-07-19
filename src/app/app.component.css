@@ -3,21 +3,41 @@ header {background-color:black;
   padding: 15px 30px;
   text-align:center;
   font-size: 1.2rem;
-  
+  box-sizing: border-box;
 }      
 
+/* ============================
+   CUERPO DE LA PÁGINA
+============================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y legible */
+  width: 100%;                    /* Ocupa todo el ancho del navegador */
+  height: 100%;                   /* Ocupa todo el alto (cuando es necesario) */
+  overflow-x: hidden;             /* Evita barras de desplazamiento horizontal innecesarias */
+  margin: 0; /* Sin margen por defecto */
+  padding: 0; /* Sin padding por defecto */
+  background-color: #f9f9f9;      /* Fondo claro para el sitio */
+  color: #333;                    /* Texto gris oscuro para mejor contraste */
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  height: 100vh; /* Ocupa todo el alto de la ventana */
+  overflow: hidden;
+}
 
 footer {
-  background-color:purple;
-  color: white;
-  text-align: left;
-  padding: 0;
-  position:absolute;
-  margin: 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  background-color: #222;         /* Fondo gris oscuro */
+  color: #fff;                    /* Texto blanco */
+  text-align: left;               /* Alineado a la izquierda */
+  padding: 0;             /* Texto centrado */
+  position: absolute; /* Posición absoluta para el pie de página */
+  margin: 0; /* Sin margen */
+  position: fixed; /* Fijo al fondo de la página */
+  bottom: 0; /* Fijo al fondo */
+  width: 100vw; /* Ocupa todo el ancho de la página */
+  box-sizing: border-box;
+  overflow: hidden; /* Evita barras de desplazamiento */
 }
+/* ============================
+   NAVEGACIÓN
 
 /* Estilos para la barra de navegación general */
 nav ul {
@@ -26,23 +46,27 @@ nav ul {
     padding: 0;
     display: flex; /* Organiza los elementos de la lista horizontalmente */
     justify-content: space-evenly; /* Centra los elementos de navegación */
-    background-color: #333; /* Color de fondo para la barra de navegación */
+    background-color: #000001; /* Color de fondo para la barra de navegación */
     padding: 10px 0; /* Un poco de padding arriba y abajo para la barra */
 }
 
-/* Estilos para cada elemento de la lista (cada "botón") */
+/* Estilos para cada elemento de lsa lista (cada "botón") */
 nav li {
-    margin: 0 10px; /* Espacio entre los botones */
+    margin: 0; /* Espacio entre los botones */
+    padding: 0; /* Sin padding por defecto */
+    flex: 1; /* Cada botón ocupa el mismo espacio */
+    
 }
 
 /* Estilos para los enlaces dentro de la navegación (los que queremos que parezcan botones) */
 nav a {
-    display: inline-block; /* Permite aplicar padding, ancho, etc. */
-    padding: 10px 20px; /* Relleno interno del botón */
-    background-color: #8A2BE2;
+    /*display: inline-block; /* Permite aplicar padding, ancho, etc. */
+    padding: 10px 15px; /* Un poco de padding interno */
+    text-decoration: none; /* Relleno interno del botón */
+    background-color: #080004f7;
     color: white; /* Texto en color blanco */
     text-decoration: none; /* Elimina el subrayado del enlace */
-    border: 1px solid #6A0DAD; /* Un borde morado ligeramente más oscuro */
+    border: 0.5px solid #f3ff0c; /* Un borde morado ligeramente más oscuro */
     border-radius: 5px; /* Esquinas ligeramente redondeadas */
     transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
     font-family: Arial, sans-serif; /* Puedes ajustar la fuente si lo necesitas */
@@ -52,6 +76,6 @@ nav a {
 
 /* Estilos cuando el mouse pasa por encima del botón */
 nav a:hover {
-    background-color: #6A0DAD; /* Morado más oscuro al pasar el mouse */
+    background-color: #333; /* Morado más oscuro al pasar el mouse */
     cursor: pointer; /* Cambia el cursor a una manito */
 }
