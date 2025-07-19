@@ -18,3 +18,40 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+/* Estilos para la barra de navegación general */
+nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Organiza los elementos de la lista horizontalmente */
+    justify-content: space-evenly; /* Centra los elementos de navegación */
+    background-color: #333; /* Color de fondo para la barra de navegación */
+    padding: 10px 0; /* Un poco de padding arriba y abajo para la barra */
+}
+
+/* Estilos para cada elemento de la lista (cada "botón") */
+nav li {
+    margin: 0 10px; /* Espacio entre los botones */
+}
+
+/* Estilos para los enlaces dentro de la navegación (los que queremos que parezcan botones) */
+nav a {
+    display: inline-block; /* Permite aplicar padding, ancho, etc. */
+    padding: 10px 20px; /* Relleno interno del botón */
+    background-color: #8A2BE2;
+    color: white; /* Texto en color blanco */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border: 1px solid #6A0DAD; /* Un borde morado ligeramente más oscuro */
+    border-radius: 5px; /* Esquinas ligeramente redondeadas */
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+    font-family: Arial, sans-serif; /* Puedes ajustar la fuente si lo necesitas */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centra el texto dentro del botón */
+}
+
+/* Estilos cuando el mouse pasa por encima del botón */
+nav a:hover {
+    background-color: #6A0DAD; /* Morado más oscuro al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor a una manito */
+}
