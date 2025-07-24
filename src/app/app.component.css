@@ -1,81 +1,54 @@
-header {background-color:black; 
-  color:white;
-  padding: 15px 30px;
-  text-align:center;
-  font-size: 1.2rem;
-  box-sizing: border-box;
-}      
-
-/* ============================
-   CUERPO DE LA PÁGINA
-============================= */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y legible */
-  width: 100%;                    /* Ocupa todo el ancho del navegador */
-  height: 100%;                   /* Ocupa todo el alto (cuando es necesario) */
-  overflow-x: hidden;             /* Evita barras de desplazamiento horizontal innecesarias */
-  margin: 0; /* Sin margen por defecto */
-  padding: 0; /* Sin padding por defecto */
-  background-color: #f9f9f9;      /* Fondo claro para el sitio */
-  color: #333;                    /* Texto gris oscuro para mejor contraste */
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
-  height: 100vh; /* Ocupa todo el alto de la ventana */
-  overflow: hidden;
+/* NAVBAR: estilos de la barra superior */
+.navbar {
+  background-color: #004080; /* Azul oscuro */
+  padding: 10px 20px;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.navbar-menu li a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* FOOTER: estilos coherentes con la navbar */
 footer {
-  background-color: #222;         /* Fondo gris oscuro */
-  color: #fff;                    /* Texto blanco */
-  text-align: left;               /* Alineado a la izquierda */
-  padding: 0;             /* Texto centrado */
-  position: absolute; /* Posición absoluta para el pie de página */
-  margin: 0; /* Sin margen */
-  position: fixed; /* Fijo al fondo de la página */
-  bottom: 0; /* Fijo al fondo */
-  width: 100vw; /* Ocupa todo el ancho de la página */
-  box-sizing: border-box;
-  overflow: hidden; /* Evita barras de desplazamiento */
-}
-/* ============================
-   NAVEGACIÓN
+  text-align: center;                 /* Centra el texto */
+  padding:  0ox;                    /* Espaciado arriba y abajo */
+  margin-top: auto;                  /* Empuja el footer hacia abajo si hay poco contenido */
+  color: white;                       /* Texto blanco */
+  font-size: 15px;
+  width: 100%;
+  background-color: #004080;         /* Mismo azul que la navbar */
+  font-family: Arial, sans-serif;    /* Misma tipografía */
+  position: fixed;                  /* Fija el footer al fondo de la página */
+  bottom: 0;                          /* Alinea al fondo */
 
-/* Estilos para la barra de navegación general */
-nav ul {
-    list-style: none; /* Quita los puntos de la lista */
-    margin: 0;
-    padding: 0;
-    display: flex; /* Organiza los elementos de la lista horizontalmente */
-    justify-content: space-evenly; /* Centra los elementos de navegación */
-    background-color: #000001; /* Color de fondo para la barra de navegación */
-    padding: 10px 0; /* Un poco de padding arriba y abajo para la barra */
-}
-
-/* Estilos para cada elemento de lsa lista (cada "botón") */
-nav li {
-    margin: 0; /* Espacio entre los botones */
-    padding: 0; /* Sin padding por defecto */
-    flex: 1; /* Cada botón ocupa el mismo espacio */
-    
-}
-
-/* Estilos para los enlaces dentro de la navegación (los que queremos que parezcan botones) */
-nav a {
-    /*display: inline-block; /* Permite aplicar padding, ancho, etc. */
-    padding: 10px 15px; /* Un poco de padding interno */
-    text-decoration: none; /* Relleno interno del botón */
-    background-color: #080004f7;
-    color: white; /* Texto en color blanco */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    border: 0.5px solid #f3ff0c; /* Un borde morado ligeramente más oscuro */
-    border-radius: 5px; /* Esquinas ligeramente redondeadas */
-    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
-    font-family: Arial, sans-serif; /* Puedes ajustar la fuente si lo necesitas */
-    font-weight: bold; /* Texto en negrita */
-    text-align: center; /* Centra el texto dentro del botón */
-}
-
-/* Estilos cuando el mouse pasa por encima del botón */
-nav a:hover {
-    background-color: #333; /* Morado más oscuro al pasar el mouse */
-    cursor: pointer; /* Cambia el cursor a una manito */
 }

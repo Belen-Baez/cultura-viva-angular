@@ -1,17 +1,17 @@
-<nav class="navbar">
-  <div class="navbar-container">
-    <a class="logo" href="#">Cultura Viva</a>
-    <ul class="navbar-menu">
-      <li><a routerLink="/">Inicio</a></li>
-      <li><a routerLink="/home">Inicio</a></li> |
-      <li><a routerLink="/eventos">Eventos</a></li>
-      <li><a routerLink="/Menú">Menú</a></li>
-      <li><a routerLink="/Información">Información</a></li>
-      <li><a routerLink="Login">Registrarse</a></li>
-      <li><a routerLink="Contactos">Redes sociales</a></li>
-      <li><a routerLink="/eventos">Eventos</a></li>
-    </ul>
+<div class="contenedor-eventos">
+  <h2>Próximos Eventos</h2>
+
+  <!-- Si hay eventos, los mostramos -->
+  <div *ngIf="eventos.length > 0; else sinEventos">
+    <div *ngFor="let evento of eventos" class="tarjeta-evento">
+      <h3>{{ evento.titulo }}</h3>
+      <p class="fecha"><strong>Fecha:</strong> {{ evento.fecha | date:'longDate' }}</p>
+      <p class="descripcion">{{ evento.descripcion }}</p>
+    </div>
   </div>
-</nav>
 
-
+  <!-- Mensaje cuando no hay eventos -->
+  <ng-template #sinEventos>
+    <p>No hay eventos disponibles.</p>
+  </ng-template>
+</div>

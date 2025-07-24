@@ -1,36 +1,42 @@
-
-
-.navbar {
-  background-color: #3f51b5;
-  color: red;
-  padding: 1rem;
+.contenedor-eventos {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
 }
 
-.logo {
-  font-size: 1.5rem;
-  color: green;
-  text-decoration: none;
+.tarjeta-evento {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
 }
 
-.navbar-menu {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
+.tarjeta-evento:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.navbar-menu li a {
-  color: rgb(68, 0, 255) ;
-  text-decoration: none;
-  font-weight: 500;
+.tarjeta-evento h3 {
+  margin-top: 0;
+  color: #333;
 }
 
-.navbar-menu li a:hover {
-  text-decoration: underline;
+.fecha {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.descripcion {
+  color: #444;
+  line-height: 1.4;
 }
