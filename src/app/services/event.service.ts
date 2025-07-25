@@ -1,28 +1,30 @@
+// src/app/services/event.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Definimos la interfaz Evento (podés también importarla desde otro archivo si querés)
 export interface Evento {
   id: number;
   titulo: string;
-  fecha: string; // usualmente en JSON las fechas vienen como string ISO
+  fecha: Date;
   descripcion: string;
 }
 
 @Injectable({
-  providedIn: 'root' // Esto permite que el servicio se inyecte en toda la app automáticamente
+  providedIn: 'root'
 })
 export class EventService {
+  private apiUrl = 'http://127.0.0.1:8000/api/events/'; // <-- ¡Asegúrate de que esta sea la URL correcta para tus eventos!
 
-  private apiUrl = 'http://localhost:3000/eventos'; // URL base del API (cambiá según tu backend)
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
-
-  // Método para obtener todos los eventos (GET)
   getEvents(): Observable<Evento[]> {
+    // Esto es un GET, lo cual es correcto para OBTENER eventos
     return this.http.get<Evento[]>(this.apiUrl);
   }
 
-  // Podés agregar más métodos si querés: crear evento, editar, borrar, etc.
+  // Si también tienes un método para crear eventos, debería ser POST:
+  createEvent(eventData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, eventData);
+  }
 }

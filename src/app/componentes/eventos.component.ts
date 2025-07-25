@@ -1,35 +1,51 @@
-// Importamos lo necesario de Angular
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Necesario para *ngIf, *ngFor, pipes, etc.
-import { HttpClientModule } from '@angular/common/http'; // Para usar servicios HTTP
-
-// Importamos el servicio que trae los eventos
-import { EventService } from '../services/event.service'; // Verificá que la ruta sea correcta
+import { CommonModule } from '@angular/common';
+import { EventService, Evento } from '../services/event.service'; // Asegúrate de importar Evento
 
 @Component({
   selector: 'app-eventos',
-  standalone: true, // 💡 Clave para que el componente funcione sin módulo tradicional
-  imports: [CommonModule, HttpClientModule], // Módulos necesarios importados aquí mismo
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent implements OnInit {
-  // Variable para guardar los eventos que llegan del backend
-  eventos: any[] = [];
+  events: Evento[] = [];
+  isLoading = true;
+  errorMessage: string | null = null;
 
-  // Inyectamos el servicio
   constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
-    // Al iniciar el componente, se llama al backend para obtener eventos
-    this.eventService.getEvents().subscribe(
-      (data) => {
-        this.eventos = data;
-        console.log('Eventos cargados:', this.eventos);
+    this.fetchEvents();
+  }
+
+  fetchEvents(): void {
+    this.isLoading = true;
+    this.errorMessage = null;
+
+    this.eventService.getEvents().subscribe({
+      next: (data: Evento[]) => { // <-- ¡Tipado explícito para 'data'!
+        if (data && data.length > 0) {
+          this.events = data.map(e => ({
+            id: e.id,
+            titulo: e.titulo,
+            fecha: e.fecha, // Ya es string, no necesitas new Date() aquí
+            descripcion: e.descripcion
+          }));
+        } else {
+          this.events = [];
+          this.errorMessage = 'No hay eventos disponibles.';
+        }
+        this.isLoading = false;
       },
-      (error) => {
-        console.error('Error al cargar eventos:', error);
+      error: (err: any) => { // <-- ¡Tipado explícito para 'err'!
+        this.errorMessage = 'Error al obtener eventos: ' + (err.message || err.statusText);
+        console.error('Error al obtener eventos:', err);
+        this.isLoading = false;
       }
-    );
+    });
   }
 }
+
+

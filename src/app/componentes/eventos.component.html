@@ -1,17 +1,18 @@
-<div class="contenedor-eventos">
-  <h2>Próximos Eventos</h2>
+<!-- src/app/componentes/eventos/eventos.component.html -->
+<div class="eventos-list-container">
+  <h2>Lista de Eventos</h2>
+  <p *ngIf="isLoading">Cargando eventos...</p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-  <!-- Si hay eventos, los mostramos -->
-  <div *ngIf="eventos.length > 0; else sinEventos">
-    <div *ngFor="let evento of eventos" class="tarjeta-evento">
-      <h3>{{ evento.titulo }}</h3>
-      <p class="fecha"><strong>Fecha:</strong> {{ evento.fecha | date:'longDate' }}</p>
-      <p class="descripcion">{{ evento.descripcion }}</p>
+  <div *ngIf="!isLoading && events.length > 0; else noEvents">
+    <div *ngFor="let event of events" class="tarjeta-evento">
+      <h3>{{ event.titulo }}</h3>
+      <p>Fecha: {{ event.fecha | date:'shortDate' }}</p>
+      <p>{{ event.descripcion }}</p>
     </div>
   </div>
 
-  <!-- Mensaje cuando no hay eventos -->
-  <ng-template #sinEventos>
-    <p>No hay eventos disponibles.</p>
+  <ng-template #noEvents>
+    <p *ngIf="!isLoading">No hay eventos disponibles para mostrar.</p>
   </ng-template>
 </div>

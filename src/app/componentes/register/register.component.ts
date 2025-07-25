@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // ✅ Necesario para [(ngModel)] y ngForm
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service'; // Ajustá la ruta según tu proyecto
 
 @Component({
   selector: 'app-register',
@@ -19,12 +20,20 @@ export class RegisterComponent {
 
   mensaje = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   registrarUsuario() {
     if (this.usuario.username && this.usuario.password && this.usuario.email) {
-      this.mensaje = 'Usuario registrado exitosamente';
-      this.router.navigate(['/login']);
+      this.authService.register(this.usuario).subscribe({
+        next: () => {
+          this.mensaje = 'Usuario registrado exitosamente';
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          this.mensaje = 'Error al registrar usuario';
+          console.error(err);
+        }
+      });
     } else {
       this.mensaje = 'Todos los campos son obligatorios';
     }
