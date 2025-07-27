@@ -1,18 +1,30 @@
-<!-- src/app/componentes/eventos/eventos.component.html -->
-<div class="eventos-list-container">
-  <h2>Lista de Eventos</h2>
-  <p *ngIf="isLoading">Cargando eventos...</p>
-  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+<h2>Lista de Eventos</h2>
 
-  <div *ngIf="!isLoading && events.length > 0; else noEvents">
-    <div *ngFor="let event of events" class="tarjeta-evento">
-      <h3>{{ event.titulo }}</h3>
-      <p>Fecha: {{ event.fecha | date:'shortDate' }}</p>
-      <p>{{ event.descripcion }}</p>
-    </div>
-  </div>
+<div *ngIf="isLoading">Cargando eventos...</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
 
-  <ng-template #noEvents>
-    <p *ngIf="!isLoading">No hay eventos disponibles para mostrar.</p>
-  </ng-template>
-</div>
+<ul *ngIf="!isLoading && events.length > 0">
+  <li *ngFor="let event of events">
+    <strong>{{ event.titulo }}</strong> - {{ event.fecha }}<br>
+    {{ event.descripcion }}
+  </li>
+</ul>
+
+<hr>
+
+<h3>Crear nuevo evento</h3>
+<form [formGroup]="eventoForm" (ngSubmit)="submitEvento()" enctype="multipart/form-data">
+  <label for="titulo">Título:</label>
+  <input id="titulo" type="text" formControlName="titulo"><br>
+
+  <label for="descripcion">Descripción:</label>
+  <textarea id="descripcion" formControlName="descripcion"></textarea><br>
+
+  <label for="fecha">Fecha:</label>
+  <input id="fecha" type="date" formControlName="fecha"><br>
+
+  <label for="imagen">Imagen:</label>
+  <input id="imagen" type="file" (change)="onFileChange($event)"><br>
+
+  <button type="submit">Guardar evento</button>
+</form>

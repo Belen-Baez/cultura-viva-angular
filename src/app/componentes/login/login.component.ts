@@ -1,5 +1,3 @@
-// src/app/components/login/login.component.ts
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -32,19 +30,19 @@ export class LoginComponent {
 
     // ✅ Llama al método login del AuthService para comunicarte con Django
     this.authService.login(this.credenciales).subscribe({
-      next: (response) => {
-        console.log('Login exitoso desde el backend:', response);
-        this.mensaje = 'Inicio de sesión exitoso';
-        // Aquí es donde guardarías el token si tu backend lo devuelve
-        // Por ejemplo: localStorage.setItem('authToken', response.token);
+    next: (response) => {
+      console.log('Login exitoso desde el backend:', response);
+      this.mensaje = 'Inicio de sesión exitoso';
 
-        this.router.navigate(['/home']); // Redirige al usuario
-      },
-      error: (error) => {
-        console.error('Error en el login desde el backend:', error);
-        // Muestra el mensaje de error del backend si está disponible
-        this.mensaje = error.error.detail || 'Usuario o contraseña incorrectos.';
-      }
+      // ✅ Guarda el token JWT de acceso en localStorage
+      localStorage.setItem('token', response.access);
+
+      this.router.navigate(['/home']); // Redirige al usuario
+    },
+    error: (error) => {
+      console.error('Error en el login desde el backend:', error);
+      this.mensaje = error.error.detail || 'Usuario o contraseña incorrectos.';
+    }
     });
   }
 }

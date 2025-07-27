@@ -14,8 +14,7 @@ export interface Evento {
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'http://127.0.0.1:8000/api/events/'; // <-- ¡Asegúrate de que esta sea la URL correcta para tus eventos!
-
+  private apiUrl = 'http://127.0.0.1:8000/api/eventos/'; 
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<Evento[]> {
