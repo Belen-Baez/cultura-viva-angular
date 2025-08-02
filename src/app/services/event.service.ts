@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Define la interfaz para el modelo de evento, incluyendo la nueva propiedad 'imagen'
+// Interfaz para evento
 export interface Evento {
   id?: number;
   titulo: string;
   descripcion: string;
   fecha: string;
-  // La propiedad 'imagen' ahora tendrá la URL completa proporcionada por el backend.
   imagen: string;
 }
 
@@ -16,15 +15,39 @@ export interface Evento {
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'http://127.0.0.1:8000/api/eventos/'; // Reemplaza con la URL correcta de tu API
+  private apiUrl = 'http://127.0.0.1:8000/api/eventos/';
 
   constructor(private http: HttpClient) { }
 
+  // Obtener todos los eventos
   getEvents(): Observable<Evento[]> {
     return this.http.get<Evento[]>(this.apiUrl);
   }
 
+  // Crear evento (con token de autenticación)
   createEvent(eventData: FormData): Observable<Evento> {
-    return this.http.post<Evento>(this.apiUrl, eventData);
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${token}`
+    });
+    return this.http.post<Evento>(this.apiUrl, eventData, { headers });
+  }
+
+  // Eliminar evento por id (con token)
+  deleteEvent(id: number): Observable<any> {
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${token}`
+    });
+    return this.http.delete(`${this.apiUrl}${id}/`, { headers });
+  }
+
+  // (Opcional) Actualizar evento por id (con token)
+  updateEvent(id: number, eventData: FormData): Observable<Evento> {
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${token}`
+    });
+    return this.http.put<Evento>(`${this.apiUrl}${id}/`, eventData, { headers });
   }
 }

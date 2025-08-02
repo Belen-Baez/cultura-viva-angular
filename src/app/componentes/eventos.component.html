@@ -1,5 +1,6 @@
 <div class="main-container">
 
+  <!-- Sección de eventos -->
   <div class="events-section">
     <ng-container *ngIf="isLoading; else eventListContent">
       <p class="loading-message">Cargando eventos...</p>
@@ -9,6 +10,8 @@
       <ng-container *ngIf="events.length > 0; else noEventsMessage">
         <div class="events-grid">
           <div *ngFor="let event of events" class="event-card">
+            
+            <!-- Imagen del evento (o bloque alternativo si no hay imagen) -->
             <ng-container *ngIf="event.imagen; else noImageBlock">
               <img [src]="event.imagen" alt="Imagen del evento" class="event-image">
             </ng-container>
@@ -22,56 +25,72 @@
               </div>
             </ng-template>
             
+            <!-- Detalles del evento -->
             <div class="event-details">
               <h2>{{ event.titulo }}</h2>
               <p>{{ event.fecha | date:'yyyy-MM-dd' }}</p>
               <p>{{ event.descripcion }}</p>
+
+              <!-- Botones visibles solo para admin -->
+              <div *ngIf="authService.isAdmin()" class="admin-controls">
+                <button (click)="editarEvento(event)">Editar</button>
+                <button (click)="eliminarEvento(event)">Eliminar</button>
+              </div>
+
+              <!-- Botón para todos -->
               <button class="buy-button" (click)="comprarTicket(event)">Comprar entrada</button>
             </div>
           </div>
         </div>
       </ng-container>
 
+      <!-- Si no hay eventos -->
       <ng-template #noEventsMessage>
         <p class="error-message">{{ errorMessage || 'No hay eventos disponibles.' }}</p>
       </ng-template>
     </ng-template>
 
+    <!-- Mensaje de error general -->
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
   </div>
 
-  <div class="form-section">
+  <!-- Sección del formulario solo visible para ADMIN -->
+  <div class="form-section" *ngIf="authService.isAdmin()">
     <div class="form-card">
       <h2>Crear nuevo evento</h2>
-      
+
       <div *ngIf="eventoForm.invalid && (eventoForm.dirty || eventoForm.touched)" class="form-error-message">
         Por favor, completa todos los campos requeridos.
       </div>
-      
+
       <form [formGroup]="eventoForm" (ngSubmit)="submitEvento()">
         <div class="form-group">
           <label for="titulo">Título:</label>
           <input type="text" id="titulo" formControlName="titulo">
         </div>
+
         <div class="form-group">
           <label for="descripcion">Descripción:</label>
           <textarea id="descripcion" formControlName="descripcion"></textarea>
         </div>
+
         <div class="form-group fecha-input">
           <label for="fecha">Fecha:</label>
           <input type="date" id="fecha" formControlName="fecha">
         </div>
+
         <div class="form-group">
           <label for="imagen">Imagen:</label>
           <div class="file-upload">
             <input type="file" id="imagen" #fileInput (change)="onFileChange($event)">
           </div>
         </div>
-        
+
         <button type="submit" class="submit-button" [disabled]="eventoForm.invalid || !selectedFile">Guardar evento</button>
       </form>
     </div>
   </div>
 
+</div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service'; // Asegúrate de que la ruta sea correcta
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
