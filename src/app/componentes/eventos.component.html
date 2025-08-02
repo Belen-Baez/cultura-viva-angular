@@ -59,7 +59,7 @@
   <!-- Sección del formulario solo visible para ADMIN -->
   <div class="form-section" *ngIf="authService.isAdmin()">
     <div class="form-card">
-      <h2>Crear nuevo evento</h2>
+      <h2>{{ editingEventId ? 'Editar evento' : 'Crear nuevo evento' }}</h2>
 
       <div *ngIf="eventoForm.invalid && (eventoForm.dirty || eventoForm.touched)" class="form-error-message">
         Por favor, completa todos los campos requeridos.
@@ -88,7 +88,13 @@
           </div>
         </div>
 
-        <button type="submit" class="submit-button" [disabled]="eventoForm.invalid || !selectedFile">Guardar evento</button>
+        <button type="submit" class="submit-button" [disabled]="eventoForm.invalid || (!selectedFile && !editingEventId)">
+          {{ editingEventId ? 'Actualizar evento' : 'Guardar evento' }}
+        </button>
+
+        <button type="button" class="cancel-button" *ngIf="editingEventId" (click)="resetForm()">
+          Cancelar edición
+        </button>
       </form>
     </div>
   </div>

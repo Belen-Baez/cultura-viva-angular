@@ -20,6 +20,8 @@ export class EventosComponent implements OnInit {
   errorMessage: string | null = null;
   selectedFile: File | null = null;
 
+  editingEventId: number | null = null;
+
   eventoForm: FormGroup;
 
   constructor(
@@ -85,20 +87,41 @@ export class EventosComponent implements OnInit {
       formData.append('imagen', this.selectedFile, this.selectedFile.name);
     }
 
-    this.eventService.createEvent(formData).subscribe({
-      next: () => {
-        this.fetchEvents();
-        this.eventoForm.reset();
-        this.selectedFile = null;
-        this.fileInput.nativeElement.value = '';
-        this.isLoading = false;
-      },
-      error: (err: any) => {
-        console.error('Error al crear evento:', err);
-        this.errorMessage = 'Error al crear el evento.';
-        this.isLoading = false;
-      }
-    });
+    if (this.editingEventId) {
+      // Editar evento
+      this.eventService.updateEvent(this.editingEventId, formData).subscribe({
+        next: () => {
+          this.fetchEvents();
+          this.resetForm();
+        },
+        error: (err) => {
+          console.error('Error al actualizar evento:', err);
+          this.errorMessage = 'Error al actualizar el evento.';
+          this.isLoading = false;
+        }
+      });
+    } else {
+      // Crear nuevo evento
+      this.eventService.createEvent(formData).subscribe({
+        next: () => {
+          this.fetchEvents();
+          this.resetForm();
+        },
+        error: (err) => {
+          console.error('Error al crear evento:', err);
+          this.errorMessage = 'Error al crear el evento.';
+          this.isLoading = false;
+        }
+      });
+    }
+  }
+
+  resetForm(): void {
+    this.eventoForm.reset();
+    this.selectedFile = null;
+    this.editingEventId = null;
+    this.fileInput.nativeElement.value = '';
+    this.isLoading = false;
   }
 
   comprarTicket(event: Evento): void {
@@ -107,7 +130,14 @@ export class EventosComponent implements OnInit {
   }
 
   editarEvento(evento: Evento): void {
-    alert(`Función de edición aún no implementada para: ${evento.titulo}`);
+    this.eventoForm.patchValue({
+      titulo: evento.titulo,
+      descripcion: evento.descripcion,
+      fecha: evento.fecha
+    });
+    this.selectedFile = null;
+    this.editingEventId = evento.id!;
+
   }
 
   eliminarEvento(evento: Evento): void {
@@ -127,4 +157,3 @@ export class EventosComponent implements OnInit {
     });
   }
 }
-

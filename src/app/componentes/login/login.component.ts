@@ -36,7 +36,7 @@ export class LoginComponent {
       this.mensaje = 'Inicio de sesión exitoso';
 
       // ✅ Guarda el token JWT de acceso en localStorage
-      localStorage.setItem('token', response.access);
+      localStorage.setItem('token', response.token);
 
       this.router.navigate(['/home']); // Redirige al usuario
     },
