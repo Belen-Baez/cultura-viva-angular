@@ -36,7 +36,7 @@
 }
 
 .login-form input:focus {
-  border-color: #007bff;
+  border-color: #000000;
   outline: none;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .login-button:hover {
-  background-color: #003063;
+  background-color: #000641;
 }
 
 .alert-container {

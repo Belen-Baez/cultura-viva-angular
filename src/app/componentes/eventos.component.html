@@ -41,8 +41,8 @@
 
               <!-- Botones visibles solo para admin -->
               <div *ngIf="authService.isAdmin()" class="admin-controls">
-                <button (click)="editarEvento(event)">Editar</button>
-                <button (click)="eliminarEvento(event)">Eliminar</button>
+                <button class="btn-editar" (click)="editarEvento(event)">Editar</button>
+                <button class="btn-eliminar" (click)="eliminarEvento(event)">Eliminar</button>
               </div>
 
               <!-- Botón para todos -->
@@ -65,7 +65,7 @@
   </div>
 
   <!-- Sección del formulario solo visible para ADMIN -->
-  <div class="form-section" *ngIf="authService.isAdmin()">
+  <div class="form-section" *ngIf="authService.isAdmin()" #formSection>
     <div class="form-card">
       <h2>{{ editingEventId ? 'Editar evento' : 'Crear nuevo evento' }}</h2>
 

@@ -14,6 +14,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class EventosComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
+  @ViewChild('formSection') formSection!: ElementRef;  // Referencia al formulario
 
   events: Evento[] = [];
   isLoading = true;
@@ -150,6 +151,11 @@ export class EventosComponent implements OnInit {
     });
     this.selectedFile = null;
     this.editingEventId = evento.id!;
+
+    // Scroll suave hacia el formulario
+    setTimeout(() => {
+      this.formSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 
   eliminarEvento(evento: Evento): void {
@@ -169,3 +175,4 @@ export class EventosComponent implements OnInit {
     });
   }
 }
+

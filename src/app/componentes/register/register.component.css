@@ -36,7 +36,7 @@
 }
 
 .register-form input:focus {
-  border-color: #28a745;
+  border-color: #000000;
   outline: none;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .register-button:hover {
-  background-color: #003063;
+  background-color: #000000;
 }
 
 /* Estilos para los mensajes */

@@ -245,3 +245,41 @@ body {
   font-size: 0.9em;
   width: 100%;
 }
+/* Botones Editar y Eliminar en sección admin-controls */
+.admin-controls button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: font-weight 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  user-select: none;
+  margin-right: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  color: white;
+}
+
+.btn-editar {
+  background-color: #ffc107; /* Amarillo */
+  color: #212529;
+}
+
+.btn-eliminar {
+  background-color: #ff0019; /* Rojo */
+  color: white;
+}
+
+/* Al hacer clic, negrita y sombra */
+.admin-controls button:active {
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Hover */
+.btn-editar:hover {
+  background-color: #eeb301;
+}
+
+.btn-eliminar:hover {
+  background-color: #df0016;
+}
