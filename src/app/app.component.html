@@ -3,18 +3,21 @@
     <div class="navbar-container">
       <a class="logo" routerLink="/">Cultura Viva</a>
       <ul class="navbar-menu">
-        <li><a routerLink="/" routerLinkActive="active" >Inicio</a></li>
-        <li><a routerLink="/eventos" routerLinkActive="active">Eventos</a></li>
-        <li><a routerLink="/informacion" routerLinkActive="active">Información</a></li>
-        <li><a routerLink="/register" routerLinkActive="active">Registrarse</a></li>
-        <li><a routerLink="/login" routerLinkActive="active">Iniciar sesión</a></li>
-        <li><a routerLink="/contactos" routerLinkActive="active">Redes sociales</a></li>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
+        <li><a routerLink="/eventos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Eventos</a></li>
+        <li><a routerLink="/informacion" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Información</a></li>
+
+        <!-- Mostrar solo si NO está logueado -->
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Registrarse</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Iniciar sesión</a></li>
+
+        <!-- Mostrar solo si está logueado -->
+        <li *ngIf="authService.isLoggedIn()">
+          <a href="#" (click)="logout()">Cerrar Sesión</a>
+        </li>
       </ul>
     </div>
   </nav>
-</header>
-
-<hr>
 
 <main>
   <router-outlet></router-outlet>

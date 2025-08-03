@@ -19,3 +19,14 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req);
   }
 }
+export class AuthService {
+  // Retorna true si hay token guardado (usuario logueado)
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+}
+

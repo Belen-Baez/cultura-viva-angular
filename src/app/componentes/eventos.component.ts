@@ -24,6 +24,9 @@ export class EventosComponent implements OnInit {
 
   eventoForm: FormGroup;
 
+  mensajeVisible = false;
+  mensajeTexto = '';
+
   constructor(
     private eventService: EventService,
     private fb: FormBuilder,
@@ -125,8 +128,18 @@ export class EventosComponent implements OnInit {
   }
 
   comprarTicket(event: Evento): void {
-    console.log(`Comprando ticket para: ${event.titulo}`);
-    alert(`Gracias por tu interés en "${event.titulo}". ¡Te enviaremos información acerca de la venta de tickets!`);
+    if (!this.authService.isLoggedIn()) {
+      this.mensajeTexto = 'Debe iniciar sesión para poder comprar la entrada.';
+      this.mensajeVisible = true;
+      return;
+    }
+
+    this.mensajeTexto = `Gracias por tu interés en "${event.titulo}". ¡Te enviaremos información acerca de la venta de tickets!`;
+    this.mensajeVisible = true;
+  }
+
+  cerrarMensaje(): void {
+    this.mensajeVisible = false;
   }
 
   editarEvento(evento: Evento): void {
@@ -137,7 +150,6 @@ export class EventosComponent implements OnInit {
     });
     this.selectedFile = null;
     this.editingEventId = evento.id!;
-
   }
 
   eliminarEvento(evento: Evento): void {

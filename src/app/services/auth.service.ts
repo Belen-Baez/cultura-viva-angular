@@ -38,6 +38,11 @@ export class AuthService {
  isAdmin(): boolean {
     return localStorage.getItem('isAdmin') === 'true';
   }
+  
+// 4. Verifica si el usuario está logueado
+isLoggedIn(): boolean {
+  return !!localStorage.getItem('token');
+}
 
   // 5. Cerrar sesión
   logout(): void {

@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthService } from './services/auth.service'; 
 import { EventService } from './services/event.service';
-import { routes } from './app.routes'; // 👈 Importa las rutas correctamente
 
 interface Evento {
   id: number;
@@ -27,8 +26,6 @@ interface Evento {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })          
-
-
 export class AppComponent implements OnInit {
   title = 'cultura-viva-angular';
 
@@ -37,7 +34,10 @@ export class AppComponent implements OnInit {
   errorMessage: string | null = null;
   events: Evento[] = [];
 
-  constructor(private eventService: EventService) {}
+  constructor(
+    private eventService: EventService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.fetchEvents();
@@ -76,5 +76,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-}
 
+  logout(): void {
+    this.authService.logout();
+    // redirigir a login después del logout
+  }
+}

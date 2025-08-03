@@ -1,5 +1,13 @@
 <div class="main-container">
 
+  <!-- Mensaje modal para info o login -->
+  <div *ngIf="mensajeVisible" class="mensaje-sesion-overlay">
+    <div class="mensaje-sesion">
+      <p>{{ mensajeTexto }}</p>
+      <button class="boton-aceptar" (click)="cerrarMensaje()">Aceptar</button>
+    </div>
+  </div>
+
   <!-- Sección de eventos -->
   <div class="events-section">
     <ng-container *ngIf="isLoading; else eventListContent">
@@ -100,3 +108,4 @@
   </div>
 
 </div>
+

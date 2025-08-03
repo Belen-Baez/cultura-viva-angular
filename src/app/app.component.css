@@ -31,24 +31,52 @@
   color: white;
   text-decoration: none;
   font-weight: normal;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
+/* Estado activo (ruta actual) */
 .navbar-menu li a.active {
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none; /* Sin subrayado */
+  background-color: #003366; /* Más oscuro para destacar */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+/* Efecto hover para "elevar" el botón */
+.navbar-menu li a:hover {
+  background-color: #003366; /* Cambia el fondo a un azul más oscuro al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(102, 102, 102, 0.4); /* Añade sombra para dar efecto de elevación */
+  transform: translateY(-2px); /* Mueve el botón 2px hacia arriba para simular que se eleva */
+  text-decoration: none; /* Elimina el subrayado del enlace cuando está en hover */
+  cursor: pointer; /* Cambia el cursor a mano para indicar que es clickeable */
+}
+
+/* FOOTER: estilos coherentes con la navbar */
+footer {
+  text-align: center;
+  padding: 0;
+  margin-top: auto;
+  color: white;
+  font-size: 15px;
+  width: 100%;
+  background-color: #004080;
+  font-family: Arial, sans-serif;
+  position: fixed;
+  bottom: 0;
 }
 
 /* FOOTER: estilos coherentes con la navbar */
 footer {
   text-align: center;                 /* Centra el texto */
-  padding:  0ox;                    /* Espaciado arriba y abajo */
+  padding: 0;                        /* Espaciado arriba y abajo */
   margin-top: auto;                  /* Empuja el footer hacia abajo si hay poco contenido */
-  color: white;                       /* Texto blanco */
+  color: white;                     /* Texto blanco */
   font-size: 15px;
   width: 100%;
   background-color: #004080;         /* Mismo azul que la navbar */
   font-family: Arial, sans-serif;    /* Misma tipografía */
-  position: fixed;                  /* Fija el footer al fondo de la página */
-  bottom: 0;                          /* Alinea al fondo */
-
+  position: fixed;                   /* Fija el footer al fondo de la página */
+  bottom: 0;                        /* Alinea al fondo */
 }
