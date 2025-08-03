@@ -51,4 +51,15 @@
 
 .redes-sociales a:hover {
   color: #505050;
+  transform: scale(1.2);
 }
+
+.social-icon {
+  width: 40px; /* tamaño base */
+  height: 40px;
+  transition: transform 0.3s ease; /* transición suave */
+  cursor: pointer;
+}
+
+
+
