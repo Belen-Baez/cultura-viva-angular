@@ -1,0 +1,54 @@
+.historia-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.historia-container h2 {
+  text-align: center;
+  color: #000292;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.historia-container p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.redes-sociales {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.redes-sociales h3 {
+  margin-bottom: 15px;
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.redes-sociales a {
+  display: inline-block;
+  margin: 0 12px;
+  text-decoration: none;
+  color: #505050;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.redes-sociales a i {
+  margin-right: 8px;
+  font-size: 1.3rem;
+  vertical-align: middle;
+}
+
+.redes-sociales a:hover {
+  color: #505050;
+}

@@ -90,9 +90,9 @@
         </div>
 
         <div class="form-group">
-          <label for="imagen">Imagen:</label>
+          <label for="imagen"></label>
           <div class="file-upload">
-            <input type="file" id="imagen" #fileInput (change)="onFileChange($event)">
+            <input type="file" id="imagen" (change)="onFileChange($event)" />
           </div>
         </div>
 
@@ -100,8 +100,8 @@
           {{ editingEventId ? 'Actualizar evento' : 'Guardar evento' }}
         </button>
 
-        <button type="button" class="cancel-button" *ngIf="editingEventId" (click)="resetForm()">
-          Cancelar edición
+        <button type="button" class="submit-button" *ngIf="editingEventId" (click)="resetForm()">
+         Cancelar edición
         </button>
       </form>
     </div>
