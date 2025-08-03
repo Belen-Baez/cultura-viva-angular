@@ -2,7 +2,7 @@
   max-width: 400px;
   margin: 60px auto;
   padding: 30px;
-  background-color: #fdfdfd;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', sans-serif;
@@ -56,9 +56,25 @@
   background-color: #003063;
 }
 
-.mensaje {
+.alert-container {
   margin-top: 15px;
+}
+
+.alert {
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 15px;
   text-align: center;
-  color: #d9534f; /* rojo suave para errores */
-  font-weight: 500;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #005c15;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #84000d;
+  border: 1px solid #f5c6cb;
 }

@@ -22,8 +22,19 @@
 
     <!-- Botón para enviar el formulario -->
     <button type="submit" class="register-button">Registrar</button>
-  </form>
 
-  <!-- Mostrar mensajes de éxito o error -->
-  <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
+    <!-- Mensaje de éxito o error debajo del botón -->
+    <div *ngIf="mensaje" class="alert-container mt-3">
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-success': mensajeTipo === 'exito',
+          'alert-danger': mensajeTipo === 'error'
+        }"
+        role="alert"
+      >
+        {{ mensaje }}
+      </div>
+    </div>
+  </form>
 </div>

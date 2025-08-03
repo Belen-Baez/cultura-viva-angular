@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // Asegúrate de que la ruta sea correcta
-
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,32 +17,35 @@ export class LoginComponent {
     password: ''
   };
 
-  mensaje = ''; // Para mostrar mensajes al usuario
+  mensaje = '';
+  mensajeTipo: 'exito' | 'error' | null = null;
 
-  // ✅ COMBINA AMBOS SERVICIOS EN UN SOLO CONSTRUCTOR
   constructor(
     private router: Router,
-    private authService: AuthService // Inyecta el AuthService aquí
+    private authService: AuthService
   ) {}
 
   iniciarSesion(): void {
-    this.mensaje = ''; // Limpia mensajes anteriores
+    this.mensaje = '';
+    this.mensajeTipo = null;
 
-    // ✅ Llama al método login del AuthService para comunicarte con Django
     this.authService.login(this.credenciales).subscribe({
-    next: (response) => {
-      console.log('Login exitoso desde el backend:', response);
-      this.mensaje = 'Inicio de sesión exitoso';
+      next: (response) => {
+        console.log('Login exitoso desde el backend:', response);
+        this.mensaje = 'Inicio de sesión exitoso';
+        this.mensajeTipo = 'exito';
 
-      // ✅ Guarda el token JWT de acceso en localStorage
-      localStorage.setItem('token', response.token);
-
-      this.router.navigate(['/home']); // Redirige al usuario
-    },
-    error: (error) => {
-      console.error('Error en el login desde el backend:', error);
-      this.mensaje = error.error.detail || 'Usuario o contraseña incorrectos.';
-    }
+        // Mostrar el mensaje durante segundos antes de redirigir
+        setTimeout(() => {
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/home']);
+        }, 1000);
+      },
+      error: (error) => {
+        console.error('Error en el login desde el backend:', error);
+        this.mensaje = error.error.detail || 'Usuario o contraseña incorrectos.';
+        this.mensajeTipo = 'error';
+      }
     });
   }
 }

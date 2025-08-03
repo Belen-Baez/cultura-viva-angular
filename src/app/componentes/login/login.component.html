@@ -1,5 +1,5 @@
 <div class="login-container">
-  <h2 class="login-title">Página de Inicio de Sesión+</h2>
+  <h2 class="login-title">Página de Inicio de Sesión</h2>
 
   <form (ngSubmit)="iniciarSesion()" #form="ngForm" class="login-form">
     <!-- Campo de nombre de usuario -->
@@ -26,8 +26,21 @@
       />
     </div>
 
+    <!-- Botón -->
     <button type="submit" class="login-button">Iniciar Sesión</button>
-  </form>
 
-  <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
+    <!-- Mensaje debajo del botón -->
+    <div *ngIf="mensaje" class="alert-container mt-3">
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-success': mensajeTipo === 'exito',
+          'alert-danger': mensajeTipo === 'error'
+        }"
+        role="alert"
+      >
+        {{ mensaje }}
+      </div>
+    </div>
+  </form>
 </div>
