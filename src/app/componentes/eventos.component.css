@@ -94,13 +94,13 @@ body {
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Efecto hover para "elevar" el botón */
 .buy-button:hover {
-  background-color: #f0f0f0; /* Fondo un poco más oscuro */
-  box-shadow: 0 6px 12px rgba(111, 111, 111, 0.2); /* Sombra para dar profundidad */
-  transform: translateY(-1,5px); /* Eleva el botón 3px hacia arriba */
+  background-color: #00509f; /* Cambia el fondo a un azul más oscuro al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(102, 102, 102, 0.4); /* Añade sombra para dar efecto de elevación */
+  transform: translateY(-2px); /* Mueve el botón 2px hacia arriba para simular que se eleva */
+  text-decoration: none; /* Elimina el subrayado del enlace cuando está en hover */
+  cursor: pointer; /* Cambia el cursor a mano para indicar que es clickeable */
 }
-
 /* Mensajes de estado */
 .loading-message, .error-message {
   text-align: center;

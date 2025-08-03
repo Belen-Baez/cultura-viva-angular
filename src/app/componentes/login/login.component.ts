@@ -26,26 +26,24 @@ export class LoginComponent {
   ) {}
 
   iniciarSesion(): void {
-    this.mensaje = '';
-    this.mensajeTipo = null;
+  this.mensaje = '';
+  this.mensajeTipo = null;
 
-    this.authService.login(this.credenciales).subscribe({
-      next: (response) => {
-        console.log('Login exitoso desde el backend:', response);
-        this.mensaje = 'Inicio de sesión exitoso';
-        this.mensajeTipo = 'exito';
+  this.authService.login(this.credenciales).subscribe({
+    next: (response: any) => {
+      console.log('Login exitoso desde el backend:', response);
+      this.mensaje = 'Inicio de sesión exitoso';
+      this.mensajeTipo = 'exito';
 
-        // Mostrar el mensaje durante segundos antes de redirigir
-        setTimeout(() => {
-          localStorage.setItem('token', response.token);
-          this.router.navigate(['/home']);
-        }, 1000);
-      },
-      error: (error) => {
-        console.error('Error en el login desde el backend:', error);
-        this.mensaje = error.error.detail || 'Usuario o contraseña incorrectos.';
-        this.mensajeTipo = 'error';
-      }
-    });
-  }
-}
+      setTimeout(() => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/home']);
+      }, 1000);
+    },
+    error: (err: any) => {
+      // Mostramos mensaje personalizado sin importar el texto exacto del backend
+      this.mensaje = 'Usuario o contraseña incorrectos';
+      this.mensajeTipo = 'error';
+    }
+  });
+}}
