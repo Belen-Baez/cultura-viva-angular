@@ -53,19 +53,6 @@
   cursor: pointer; /* Cambia el cursor a mano para indicar que es clickeable */
 }
 
-/* FOOTER: estilos coherentes con la navbar */
-footer {
-  text-align: center;
-  padding: 0;
-  margin-top: auto;
-  color: white;
-  font-size: 15px;
-  width: 100%;
-  background-color: #004080;
-  font-family: Arial, sans-serif;
-  position: fixed;
-  bottom: 0;
-}
 
 /* FOOTER: estilos coherentes con la navbar */
 footer {
@@ -73,7 +60,7 @@ footer {
   padding: 0;                        /* Espaciado arriba y abajo */
   margin-top: auto;                  /* Empuja el footer hacia abajo si hay poco contenido */
   color: white;                     /* Texto blanco */
-  font-size: 15px;
+  font-size: 11px;
   width: 100%;
   background-color: #004080;         /* Mismo azul que la navbar */
   font-family: Arial, sans-serif;    /* Misma tipografía */
