@@ -37,8 +37,14 @@
             <div class="event-details">
               <h2>{{ event.titulo }}</h2>
               <p>{{ event.descripcion }}</p>
-              <p><strong>Ubicación:</strong> {{ event.ubicacion }}</p>
-              <p>{{ event.fecha | date:'yyyy-MM-dd' }}</p>
+              <p style="display: flex; align-items: center; gap: 6px; color: rgb(83, 82, 82);">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 24 24" fill="#6c757d" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                </svg>
+                {{ event.ubicacion }}
+               <p style="margin-top: 8px; font-weight: 600; text-align: center;">
+                    {{ event.fecha | date:'dd/MM/yyyy' }}
+                </p>
 
               <!-- Botones visibles solo para admin -->
               <div *ngIf="authService.isAdmin()" class="admin-controls">
@@ -114,4 +120,5 @@
   </div>
 
 </div>
+
 
