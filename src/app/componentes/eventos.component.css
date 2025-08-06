@@ -1,332 +1,227 @@
-/* Estilos generales y del contenedor principal */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-}
-
 .main-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 0 1rem;
+}
+
+.mensaje-sesion-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
   display: flex;
-  flex-direction: column; /* Organiza los elementos en una columna (lista de eventos y formulario) */
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Sección de los Eventos */
+.mensaje-sesion {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.boton-aceptar {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boton-aceptar:hover {
+  background-color: #0056b3;
+}
+
 .events-section {
-  padding: 40px;
-  background-color: #f8f9fa;
-  flex: 1; /* Ocupa el espacio restante */
+  margin-top: 2rem;
 }
 
-/* 3 columnas por fila */
+.loading-message, .error-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 2rem;
+}
+
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Crea columnas de 300px o más, con auto-ajuste */
-  gap: 25px; /* Espacio entre los eventos */
-  justify-content: center; /* Centra el contenido si no hay suficientes eventos para llenar una fila */
-  max-width: 1200px; /* Ancho máximo para la grilla */
-  margin: 0 auto; /* Centra la grilla en la página */
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap: 1.5rem;
 }
 
 .event-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
 }
 
 .event-image {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
+  border-bottom: 1px solid #ddd;
 }
 
 .terminal-mockup {
-  background-color: #333;
-  color: #00ff41;
-  padding: 15px;
-  font-family: 'Courier New', Courier, monospace;
-  height: 200px;
+  background: #222;
+  color: #0f0;
+  font-family: monospace;
+  padding: 1rem;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.terminal-mockup pre {
-  margin: 0;
   white-space: pre-wrap;
-  font-size: 12px;
-}
-.terminal-mockup span {
-  color: #ff0000;
-  margin-right: 5px;
+  border-bottom: 1px solid #444;
 }
 
 .event-details {
-  padding: 20px;
-  text-align: center;
+  padding: 1rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Hace que este contenedor ocupe el espacio restante */
 }
+
 .event-details h2 {
-  font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
+
 .event-details p {
-  margin: 5px 0;
+  flex-grow: 1;
+  margin-bottom: 1rem;
   color: #555;
-  flex-grow: 1; /* Empuja el botón hacia abajo */
-}
-.buy-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-
-  /* Transición suave para los efectos al pasar el mouse */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.buy-button:hover {
-  background-color: #00509f; /* Cambia el fondo a un azul más oscuro al pasar el mouse */
-  box-shadow: 0 6px 12px rgba(102, 102, 102, 0.4); /* Añade sombra para dar efecto de elevación */
-  transform: translateY(-2px); /* Mueve el botón 2px hacia arriba para simular que se eleva */
-  text-decoration: none; /* Elimina el subrayado del enlace cuando está en hover */
-  cursor: pointer; /* Cambia el cursor a mano para indicar que es clickeable */
-}
-/* Mensajes de estado */
-.loading-message, .error-message {
-  text-align: center;
-  font-style: italic;
-  color: #000d86;
-  padding: 20px;
-}
-.error-message {
-  color: #d9534f;
-}
-
-/* Sección del Formulario (ahora abajo) */
-.form-section {
-  padding: 40px;
-  background-color: #ffffff;
-  border-top: none; /* Línea divisoria en la parte superior del formulario */
+.admin-controls {
   display: flex;
-  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-/*cuerpo del formulario*/
-.form-card {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-  width: 90%;
-  max-width: 600px;
-  padding: 30px;
-  background-color: #a5a5a5;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgb(0, 19, 166);
-}
-
-
-.form-card h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.8em;
-  font-weight: bold; /* negrita para el título */
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #002489;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-weight: normal; /* texto normal, sin negrita */
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.form-group input[type="file"] {
+.btn-editar, .btn-eliminar, .buy-button {
   border: none;
-  padding: 0;
-}
-
-.submit-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #6c757d;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.1em;
-  cursor: pointer;
-  margin-top: 20px;
-}
-.submit-button:disabled {
-  background-color: #aeb4b9;
-  cursor: not-allowed;
-}
-.submit-button:hover:not(:disabled) {
-  background-color: #005495;
-}
-
-.form-error-message {
-  color: #d9534f;
-  background-color: #f2dede;
-  border: 1px solid #ebccd1;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* Estilos para el mensaje modal (overlay) */
-.mensaje-sesion-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.mensaje-sesion {
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  text-align: center;
-  position: relative;
-  max-width: 90%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-.boton-aceptar {
-  margin-top: 20px;
-  padding: 10px 25px;
-  font-size: 1.1rem;
-  border: none;
+  padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  background-color: #06007c;
-  color: rgb(255, 255, 255);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.boton-aceptar:hover {
-  background-color: #002f53;
-}
-
-.footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #343a40;
-  color: #f8f9fa;
-  font-size: 0.9em;
-  width: 100%;
-}
-/* Botones Editar y Eliminar en sección admin-controls */
-.admin-controls button {
-  padding: 8px 14px;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: font-weight 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
-  user-select: none;
-  margin-right: 8px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  color: white;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
 .btn-editar {
-  background-color: #ffc107; /* Amarillo */
-  color: #212529;
+  background-color: #ffc107;
+  color: #333;
+}
+
+.btn-editar:hover {
+  background-color: #e0a800;
 }
 
 .btn-eliminar {
-  background-color: #ff0019; /* Rojo */
+  background-color: #dc3545;
   color: white;
-}
-
-/* Al hacer clic, negrita y sombra */
-.admin-controls button:active {
-  font-weight: 700;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
-/* Hover */
-.btn-editar:hover {
-  background-color: #eeb301;
 }
 
 .btn-eliminar:hover {
-  background-color: #df0016;
+  background-color: #b02a37;
 }
 
-.cancel-button {
-  background-color: #cccccc;
+.buy-button {
+  background-color: #28a745;
+  color: white;
+  margin-top: auto; /* hace que el botón quede abajo */
+}
+
+.buy-button:hover {
+  background-color: #218838;
+}
+
+/* Formulario */
+
+.form-section {
+  margin-top: 3rem;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.form-card h2 {
+  margin-bottom: 1rem;
+  font-weight: 700;
   color: #333;
-  border: none;
-  padding: 10px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 20px;
-  transition: background-color 0.3s;
 }
 
-.cancel-button:hover {
-  background-color: #b3b3b3;
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.file-upload {
-  position: relative;
-  display: block;           /* cambiar a block para que margin auto funcione */
-  width: 200px;             /* ancho fijo para el botón */
-  margin: 20px auto 0;      /* margen arriba y centrado horizontal */
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.form-group textarea {
+  min-height: 80px;
 }
 
 .file-upload input[type="file"] {
-  position: absolute;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
   cursor: pointer;
-  z-index: 2;
 }
 
-.file-upload::before {
-  content: "Agregar archivo";
-  display: inline-block;
-  background-color: #005495;
+.submit-button {
+  background-color: #007bff;
   color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1em;
-  text-align: center;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  border-radius: 6px;
   cursor: pointer;
-  user-select: none;
+  margin-right: 1rem;
+  margin-top: 1rem;
   transition: background-color 0.3s ease;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 1;
 }
 
-.file-upload:hover::before {
-  background-color: #003d7a;
+.submit-button:disabled {
+  background-color: #7ba4d9;
+  cursor: not-allowed;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.form-error-message {
+  color: #dc3545;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
