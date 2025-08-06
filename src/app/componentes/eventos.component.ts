@@ -14,7 +14,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class EventosComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
-  @ViewChild('formSection') formSection!: ElementRef;  // Referencia al formulario
+  @ViewChild('formSection') formSection!: ElementRef;
 
   events: Evento[] = [];
   isLoading = true;
@@ -36,7 +36,8 @@ export class EventosComponent implements OnInit {
     this.eventoForm = this.fb.group({
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
-      fecha: ['', Validators.required]
+      fecha: ['', Validators.required],
+      ubicacion: ['', Validators.required],
     });
   }
 
@@ -49,8 +50,12 @@ export class EventosComponent implements OnInit {
     this.errorMessage = null;
 
     this.eventService.getEvents().subscribe({
-      next: (data: Evento[]) => {
-        this.events = data || [];
+      next: (data: any[]) => {
+        this.events = (data || []).map(event => ({
+          ...event,
+          ubicacion: event['ubicacion'] || event['ubicación'] || '',  // Aquí sin tilde primero
+        }));
+
         if (this.events.length === 0) {
           this.errorMessage = 'No hay eventos disponibles.';
         }
@@ -86,13 +91,13 @@ export class EventosComponent implements OnInit {
     formData.append('titulo', this.eventoForm.get('titulo')?.value);
     formData.append('descripcion', this.eventoForm.get('descripcion')?.value);
     formData.append('fecha', this.eventoForm.get('fecha')?.value);
+    formData.append('ubicacion', this.eventoForm.get('ubicacion')?.value);
 
     if (this.selectedFile) {
       formData.append('imagen', this.selectedFile, this.selectedFile.name);
     }
 
     if (this.editingEventId) {
-      // Editar evento
       this.eventService.updateEvent(this.editingEventId, formData).subscribe({
         next: () => {
           this.fetchEvents();
@@ -105,7 +110,6 @@ export class EventosComponent implements OnInit {
         }
       });
     } else {
-      // Crear nuevo evento
       this.eventService.createEvent(formData).subscribe({
         next: () => {
           this.fetchEvents();
@@ -124,7 +128,9 @@ export class EventosComponent implements OnInit {
     this.eventoForm.reset();
     this.selectedFile = null;
     this.editingEventId = null;
-    this.fileInput.nativeElement.value = '';
+    if (this.fileInput && this.fileInput.nativeElement) {
+      this.fileInput.nativeElement.value = '';
+    }
     this.isLoading = false;
   }
 
@@ -147,14 +153,17 @@ export class EventosComponent implements OnInit {
     this.eventoForm.patchValue({
       titulo: evento.titulo,
       descripcion: evento.descripcion,
-      fecha: evento.fecha
+      fecha: evento.fecha,
+      ubicacion: evento.ubicacion,
     });
+
     this.selectedFile = null;
     this.editingEventId = evento.id!;
 
-    // Scroll suave hacia el formulario
     setTimeout(() => {
-      this.formSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (this.formSection && this.formSection.nativeElement) {
+        this.formSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }, 100);
   }
 
@@ -175,4 +184,3 @@ export class EventosComponent implements OnInit {
     });
   }
 }
-

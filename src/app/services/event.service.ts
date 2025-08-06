@@ -7,6 +7,7 @@ export interface Evento {
   id?: number;
   titulo: string;
   descripcion: string;
+  ubicacion: string;
   fecha: string;
   imagen: string;
 }
