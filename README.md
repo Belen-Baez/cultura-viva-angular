@@ -1,59 +1,68 @@
-# CulturaVivaAngular
+# CULTURA VIVA 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+## Descripción del Proyecto 
 
-## Development server
+Este es el repositorio para el **[Backend / Frontend]** de nuestra aplicación web de **Gestión de Eventos**. 
 
-To start a local development server, run:
+Desarrollar una plataforma digital que permita gestionar y promocionar conciertos en vivo, brindando accesibilidad al público para consultar información actualizada sobre eventos musicales. 
 
-```bash
-ng serve
-```
+### Nuestro Enfoque de Eventos 
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Nos hemos enfocado en el nicho de conciertos porque creemos que la música en vivo es una de las expresiones culturales más impactantes y con mayor poder de convocatoria. En una era cada vez más digital, las personas siguen valorando las experiencias auténticas, emocionales y compartidas. Los conciertos ofrecen justamente eso: un espacio de conexión, energía y comunidad que trasciende lo virtual y une a las personas a través del arte y la música. 
 
-## Code scaffolding
+### Funcionalidades Clave 
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* **[Funcionalidad 1]:** Registro e Inicio de Sesión de Usuario: se realizará un formulario con correo, nombre de usuario y contraseña.  
 
-```bash
-ng generate component component-name
-```
+* **[Funcionalidad 2]:** Creación, edición y eliminación de eventos (para administradores): los administradores podrán crear el evento, con una breve descripción del mismo, podrán añadir ubicación y fecha. 
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* **[Funcionalidad 3]:** Listado de eventos: artistas, fecha y lugar. 
 
-```bash
-ng generate --help
-```
+--- 
 
-## Building
+## Tecnologías Utilizadas 
 
-To build the project run:
+### Backend (Carpeta `your-event-backend`) 
 
-```bash
-ng build
-```
+* **Lenguaje:** Python 
+* **Framework:** Django [Versión utilizada, ej: 5.x] 
+* **Base de Datos:** MySQL 
+* **Manejo de Dependencias:** pip 
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Frontend (Carpeta `your-event-frontend`) 
 
-## Running unit tests
+* **Lenguaje:** TypeScript 
+* **Framework:** Angular [Versión utilizada, ej: 16.x o 17.x] 
+* **Manejo de Paquetes:** npm / Yarn 
+* **Estilos (Opcional):** [Si usan algún framework CSS como Tailwind CSS, Bootstrap, o Materialize CSS, indícalo aquí.] 
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+--- 
 
-```bash
-ng test
-```
+## Instalación y Ejecución Local 
 
-## Running end-to-end tests
+Para poner en marcha el proyecto en tu máquina local, sigue los siguientes pasos: 
 
-For end-to-end (e2e) testing, run:
+### 1. Prerequisitos 
 
-```bash
-ng e2e
-```
+Asegúrate de tener instalado lo siguiente: 
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+* **Python:** [Versión, ej: 3.11 o superior] 
+* **Node.js:** [Versión, ej: 18.x o superior] 
+* **npm / Yarn:** [Última versión] 
+* **MySQL:** [Servidor de base de datos] 
+* **Git:** [Última versión] 
 
-## Additional Resources
+### 2. Clonar los Repositorios 
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Abre tu terminal y clona ambos repositorios (backend y frontend) en la misma carpeta raíz: 
+
+```bash 
+# Clonar el repositorio del Backend 
+git clone https://github.com/Nilsonavalos77/CULTURAVIVA1.git your-event-backend 
+cd your-event-backend 
+
+# Clonar el repositorio del Frontend (en una nueva terminal o volviendo a la carpeta raíz) 
+cd .. 
+git clone https://github.com/Belen-Baez/cultura-viva-angular.git your-event-frontend 
+``` 
+
